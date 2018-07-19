@@ -17,9 +17,9 @@ object TrackReducer : Reducer<TrackState> {
 
     override fun reduce(oldState: TrackState, action: Action): TrackState {
         return when (action) {
-            is TrackActions.TrackLoadingAction -> TrackState(isLoading = true, loadingTrackKey = action.key)
-            is TrackActions.TrackErrorAction -> TrackState(error = action.error)
-            is TrackActions.TrackResultAction -> TrackState(track = action.track)
+            is TrackActions.TrackLoadingAction -> oldState.copy(isLoading = true, loadingTrackKey = action.key)
+            is TrackActions.TrackErrorAction -> oldState.copy(error = action.error, isLoading = false)
+            is TrackActions.TrackResultAction -> oldState.copy(track = action.track, isLoading = false)
             else -> oldState
         }
     }
