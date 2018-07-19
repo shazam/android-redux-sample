@@ -18,9 +18,9 @@ object MainReducer : Reducer<MainState> {
 
     override fun reduce(oldState: MainState, action: Action): MainState {
         return when (action) {
-            is ChartActions.ChartProgress -> emptyMainState.copy(isLoading = true)
-            is ChartActions.ChartResultError -> emptyMainState.copy(error = action.error)
-            is ChartActions.ChartResultSuccess -> emptyMainState.copy(chart = action.chart)
+            is ChartActions.ChartProgress -> oldState.copy(isLoading = true, chart = null)
+            is ChartActions.ChartResultError -> oldState.copy(error = action.error, isLoading = false)
+            is ChartActions.ChartResultSuccess -> oldState.copy(chart = action.chart, isLoading = false)
             else -> oldState
         }
     }
