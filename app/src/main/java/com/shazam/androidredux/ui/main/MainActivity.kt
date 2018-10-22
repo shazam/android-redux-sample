@@ -10,8 +10,8 @@
 
 package com.shazam.androidredux.ui.main
 
-import android.arch.lifecycle.LifecycleActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View.GONE
@@ -26,7 +26,7 @@ import com.shazam.androidredux.extensions.getDispatcher
 import com.shazam.androidredux.redux.DispatcherBinder
 import rx.subscriptions.CompositeSubscription
 
-class MainActivity : LifecycleActivity() {
+class MainActivity : AppCompatActivity() {
 
     private val recyclerView by bind<RecyclerView>(R.id.recycler_view)
     private val progressBar by bind<ProgressBar>(R.id.progress_bar)
@@ -35,7 +35,7 @@ class MainActivity : LifecycleActivity() {
     private val mainActivityViewAdapter = MainActivityViewAdapter()
     private val subscriptions = CompositeSubscription()
 
-    val mainDispatcher by lazy { getDispatcher(MainDispatcherHolder::class.java) }
+    private val mainDispatcher by lazy { getDispatcher(MainDispatcherHolder::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
