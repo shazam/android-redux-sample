@@ -17,7 +17,6 @@ import com.shazam.androidredux.R
 import com.shazam.androidredux.bind
 import com.shazam.androidredux.extensions.findActivity
 import com.shazam.androidredux.extensions.plusAssign
-import com.shazam.androidredux.ui.main.TrackDispatcherHolder
 
 class TrackView : android.support.constraint.ConstraintLayout {
     constructor(context: android.content.Context) : super(context)
